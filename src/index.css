@@ -5,71 +5,76 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
   
   body {
-    background-color: #FAF7F0;
-    color: #1A2421;
+    background-color: #F8FAFC;
+    color: #0F172A;
     overflow-x: hidden;
   }
-
-  h1, h2, h3, h4, .font-serif-title {
-    font-family: 'Cinzel', 'Playfair Display', serif;
-  }
 }
 
-/* Luxury custom utilities */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #9A7936 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Glassmorphism & Sticky Navbar utility */
+.glass-nav {
+  background: rgba(11, 15, 23, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-.text-gold-light-gradient {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5EED8 40%, #D5B45F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.glass-nav-scrolled {
+  background: rgba(11, 15, 23, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
-.bg-emerald-luxury {
-  background-color: #07231B;
+/* Yellow brand accents */
+.text-brand-yellow {
+  color: #FACC15;
 }
 
-.bg-emerald-deep {
-  background-color: #041712;
+.bg-brand-yellow {
+  background-color: #FACC15;
 }
 
-.border-gold-subtle {
-  border-color: rgba(197, 160, 89, 0.35);
+.border-brand-yellow {
+  border-color: #FACC15;
 }
 
-.gold-glow-subtle {
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+/* Badge & Card Glow */
+.yellow-glow {
+  box-shadow: 0 0 20px -3px rgba(250, 204, 21, 0.35);
+}
+
+.yellow-glow-sm {
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.25);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #041712;
+  background: #0B0F17;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C5A059;
+  background: #334155;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #DFC686;
+  background: #FACC15;
 }
 
-/* Subtle decorative filigree patterns */
-.luxury-pattern {
-  background-image: radial-gradient(rgba(197, 160, 89, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.luxury-pattern-dark {
-  background-image: radial-gradient(rgba(197, 160, 89, 0.18) 1px, transparent 1px);
+/* Pattern background */
+.dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
+}
+
+.dot-pattern-dark {
+  background-image: radial-gradient(rgba(250, 204, 21, 0.12) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
 }

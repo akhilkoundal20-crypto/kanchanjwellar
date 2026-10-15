@@ -1,0 +1,160 @@
+export const CATEGORIES = [
+  {
+    id: 'electronics',
+    slug: 'electronics',
+    name: 'Electronics & Gadgets',
+    shortName: 'Electronics',
+    iconName: 'Smartphone',
+    count: 48,
+    color: 'bg-blue-50 text-blue-600 border-blue-200',
+    description: 'Find verified laptops, mobile phones, cameras, home audio, and electronics in your local area.',
+    subcategories: ['Smartphones & Tablets', 'Laptops & PCs', 'Cameras & Drones', 'Audio & Headphones', 'TV & Home Entertainment', 'Gaming Consoles'],
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'vehicles',
+    slug: 'vehicles',
+    name: 'Vehicles & Automobiles',
+    shortName: 'Vehicles',
+    iconName: 'Car',
+    count: 36,
+    color: 'bg-emerald-50 text-emerald-600 border-emerald-200',
+    description: 'Buy and sell 4x4 mountain vehicles, family cars, Royal Enfield bikes, scooters, and auto spare parts.',
+    subcategories: ['Cars & SUVs', 'Motorcycles & Scooters', 'Mountain 4x4s', 'Commercial Vehicles', 'Bicycles', 'Auto Accessories'],
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'real-estate',
+    slug: 'real-estate',
+    name: 'Real Estate & Rentals',
+    shortName: 'Real Estate',
+    iconName: 'Home',
+    count: 29,
+    color: 'bg-purple-50 text-purple-600 border-purple-200',
+    description: 'Local properties, scenic mountain homestays, apartments for rent, commercial shops, and land plots.',
+    subcategories: ['Houses & Villas', 'Apartments for Rent', 'Homestay Leases', 'Commercial Spaces', 'Plots & Land', 'PG & Shared Rooms'],
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'home-furniture',
+    slug: 'home-furniture',
+    name: 'Home & Furniture',
+    shortName: 'Furniture',
+    iconName: 'Armchair',
+    count: 42,
+    color: 'bg-amber-50 text-amber-700 border-amber-200',
+    description: 'Quality solid wood furniture, sofa sets, kitchen appliances, and traditional Himachal home decor.',
+    subcategories: ['Living Room Sets', 'Beds & Mattresses', 'Kitchen Appliances', 'Home Decor', 'Lighting', 'Garden & Outdoor'],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'fashion',
+    slug: 'fashion',
+    name: 'Fashion & Clothing',
+    shortName: 'Fashion',
+    iconName: 'ShoppingBag',
+    count: 53,
+    color: 'bg-rose-50 text-rose-600 border-rose-200',
+    description: 'Authentic Kullu shawls, warm winter jackets, traditional attire, shoes, watches, and designer wear.',
+    subcategories: ["Men's Clothing", "Women's Clothing", 'Himachali Shawls & Woolens', 'Footwear', 'Watches & Jewelry', 'Bags & Accessories'],
+    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'services',
+    slug: 'services',
+    name: 'Local Services',
+    shortName: 'Services',
+    iconName: 'Wrench',
+    count: 64,
+    color: 'bg-cyan-50 text-cyan-600 border-cyan-200',
+    description: 'Trusted local plumbers, electricians, mechanics, photographers, cleaners, and appliance technicians.',
+    subcategories: ['Plumbing & Sanitary', 'Electricians', 'Mechanics & Towing', 'Home Cleaning', 'Photography & Video', 'Event Planning', 'Beauty & Salon'],
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'rides-travel',
+    slug: 'rides-travel',
+    name: 'Travel & Rides',
+    shortName: 'Rides & Cabs',
+    iconName: 'Navigation',
+    count: 24,
+    color: 'bg-indigo-50 text-indigo-600 border-indigo-200',
+    description: 'Himachal intercity cabs, shared mountain taxis, Gaggal airport transfers, bike rentals, and sightseeing trips.',
+    subcategories: ['Local Taxi Cabs', 'Shared Cabs', 'Airport Transfers', 'Bike & Scooter Rentals', 'Trek Transfers', 'Tour Packages'],
+    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'jobs',
+    slug: 'jobs',
+    name: 'Jobs & Freelance',
+    shortName: 'Jobs',
+    iconName: 'Briefcase',
+    count: 18,
+    color: 'bg-teal-50 text-teal-600 border-teal-200',
+    description: 'Local hospitality openings, retail jobs, drivers, IT remote work, cafe baristas, and office staff.',
+    subcategories: ['Hospitality & Tourism', 'Retail & Sales', 'Drivers & Delivery', 'Office Staff & Admin', 'IT & Graphic Design', 'Teaching & Tutoring'],
+    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'food-restaurants',
+    slug: 'food-restaurants',
+    name: 'Restaurants & Food',
+    shortName: 'Food & Cafes',
+    iconName: 'Utensils',
+    count: 31,
+    color: 'bg-orange-50 text-orange-600 border-orange-200',
+    description: 'Local cafes in Dharamkot, authentic Kangri Dham catering, organic bakeries, and fresh local produce.',
+    subcategories: ['Cafes & Bakeries', 'Himachali Traditional Food', 'Catering Services', 'Organic Produce & Honey', 'Cloud Kitchens', 'Sweets & Snacks'],
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'buy-and-sell',
+    slug: 'buy-and-sell',
+    name: 'Buy & Sell General',
+    shortName: 'Buy & Sell',
+    iconName: 'Tag',
+    count: 39,
+    color: 'bg-yellow-50 text-yellow-700 border-yellow-200',
+    description: 'General second-hand items, books, sports equipment, camping gear, musical instruments, and more.',
+    subcategories: ['Camping & Trekking Gear', 'Musical Instruments', 'Books & Study Material', 'Sports & Fitness', 'Baby & Kids', 'Antiques'],
+    image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'events',
+    slug: 'events',
+    name: 'Events & Experiences',
+    shortName: 'Events',
+    iconName: 'Calendar',
+    count: 15,
+    color: 'bg-pink-50 text-pink-600 border-pink-200',
+    description: 'Local music festivals, Dharamshala film events, yoga retreats, pottery workshops, and weekend bazaars.',
+    subcategories: ['Festivals & Fairs', 'Workshops & Classes', 'Live Music & Nightlife', 'Yoga & Meditation', 'Sports Tournaments'],
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'other-local',
+    slug: 'other-local',
+    name: 'Other Local Products',
+    shortName: 'Artisan & Misc',
+    iconName: 'Package',
+    count: 22,
+    color: 'bg-stone-50 text-stone-700 border-stone-200',
+    description: 'Himachal Kangra tea, handmade wooden crafts, brass artifacts, organic apples, and traditional wares.',
+    subcategories: ['Kangra Valley Tea', 'Handicrafts & Souvenirs', 'Organic Hill Farming', 'Pet Supplies', 'Hardware & Tools'],
+    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80'
+  }
+];
+
+export const POPULAR_LOCATIONS = [
+  'All Himachal',
+  'Dharamshala',
+  'Kangra',
+  'Palampur',
+  'McLeod Ganj',
+  'Shimla',
+  'Manali',
+  'Kullu',
+  'Mandi',
+  'Solan',
+  'Una'
+];

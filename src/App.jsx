@@ -1,162 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TrustStrip from './components/TrustStrip';
-import Collections from './components/Collections';
-import ProductShowcase from './components/ProductShowcase';
-import ProductModal from './components/ProductModal';
-import SearchModal from './components/SearchModal';
-import WishlistDrawer from './components/WishlistDrawer';
-import WhyChooseUs from './components/WhyChooseUs';
-import BridalSection from './components/BridalSection';
-import AboutSection from './components/AboutSection';
-import InstagramSection from './components/InstagramSection';
-import Testimonials from './components/Testimonials';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MarketplaceProvider } from './context/MarketplaceContext';
+
+// Common Components
+import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
+import Toast from './components/common/Toast';
+import BackToTop from './components/common/BackToTop';
+import ScrollToTop from './components/common/ScrollToTop';
+
+// Pages
+import Home from './pages/Home';
+import Explore from './pages/Explore';
+import CategoriesPage from './pages/CategoriesPage';
+import CategoryDetail from './pages/CategoryDetail';
+import ProductDetail from './pages/ProductDetail';
+import PostAd from './pages/PostAd';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import ForgotPassword from './pages/ForgotPassword';
+import Dashboard from './pages/Dashboard';
+import WishlistPage from './pages/WishlistPage';
+import ServicesPage from './pages/ServicesPage';
+import RidesPage from './pages/RidesPage';
+import BusinessDirectory from './pages/BusinessDirectory';
+import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import GuidelinesPage from './pages/GuidelinesPage';
+import NotFound from './pages/NotFound';
 
 export default function App() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-  const [wishlist, setWishlist] = useState(() => {
-    try {
-      const saved = localStorage.getItem('kanchan_wishlist');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('kanchan_wishlist', JSON.stringify(wishlist));
-    } catch {
-      // ignore
-    }
-  }, [wishlist]);
-
-  const handleToggleWishlist = (product) => {
-    setWishlist((prev) => {
-      const exists = prev.some((item) => item.id === product.id);
-      if (exists) {
-        return prev.filter((item) => item.id !== product.id);
-      } else {
-        return [...prev, product];
-      }
-    });
-  };
-
-  const handleRemoveFromWishlist = (productId) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== productId));
-  };
-
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    const showcase = document.getElementById('showcase');
-    if (showcase) {
-      showcase.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleBridalExplore = () => {
-    setSelectedCategory('Bridal');
-    const showcase = document.getElementById('showcase');
-    if (showcase) {
-      showcase.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col bg-ivory-50 text-gray-900 selection:bg-gold-500 selection:text-white">
-      {/* Sticky Header Navigation */}
-      <Navbar
-        wishlistCount={wishlist.length}
-        onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenWishlist={() => setIsWishlistOpen(true)}
-        onSelectCategory={handleCategorySelect}
-      />
+    <MarketplaceProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900 selection:bg-yellow-400 selection:text-black">
+          {/* Sticky Transparent/Blur Navbar */}
+          <Navbar />
 
-      {/* Main Content Sections */}
-      <main className="flex-grow">
-        {/* 1. Hero Section */}
-        <Hero
-          onExploreClick={() => handleCategorySelect('All')}
-          onStoreClick={() => {
-            const contact = document.getElementById('contact');
-            if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
+          {/* Main Routing View */}
+          <main className="flex-grow pb-16 md:pb-0">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/category/:slug" element={<CategoryDetail />} />
+              <Route path="/listing/:id" element={<ProductDetail />} />
+              <Route path="/post-ad" element={<PostAd />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/wishlist" element={<WishlistPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/rides" element={<RidesPage />} />
+              <Route path="/businesses" element={<BusinessDirectory />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsConditions />} />
+              <Route path="/guidelines" element={<GuidelinesPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-        {/* 2. Trust Strip */}
-        <TrustStrip />
+          {/* Comprehensive Dark High-Contrast Footer */}
+          <Footer />
 
-        {/* 3. Featured Collections */}
-        <Collections onSelectCollection={handleCategorySelect} />
-
-        {/* 4. Product Showcase */}
-        <ProductShowcase
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          onViewProduct={(prod) => setSelectedProduct(prod)}
-          wishlist={wishlist}
-          onToggleWishlist={handleToggleWishlist}
-        />
-
-        {/* 5. Why Choose Us */}
-        <WhyChooseUs />
-
-        {/* 6. Bridal Section */}
-        <BridalSection onExploreBridal={handleBridalExplore} />
-
-        {/* 7. About Kanchan Jewellers */}
-        <AboutSection
-          onVisitStoreClick={() => {
-            const contact = document.getElementById('contact');
-            if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* 8. Instagram Section */}
-        <InstagramSection />
-
-        {/* 9. Customer Reviews */}
-        <Testimonials />
-
-        {/* 10. Store Location & Contact Section */}
-        <ContactSection />
-      </main>
-
-      {/* Footer */}
-      <Footer onSelectCategory={handleCategorySelect} />
-
-      {/* Floating WhatsApp Action */}
-      <FloatingWhatsApp />
-
-      {/* Modals and Drawers */}
-      <ProductModal
-        product={selectedProduct}
-        isOpen={Boolean(selectedProduct)}
-        onClose={() => setSelectedProduct(null)}
-        isWishlisted={selectedProduct ? wishlist.some((item) => item.id === selectedProduct.id) : false}
-        onToggleWishlist={handleToggleWishlist}
-      />
-
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectProduct={(prod) => setSelectedProduct(prod)}
-      />
-
-      <WishlistDrawer
-        isOpen={isWishlistOpen}
-        onClose={() => setIsWishlistOpen(false)}
-        wishlist={wishlist}
-        onRemoveFromWishlist={handleRemoveFromWishlist}
-        onViewProduct={(prod) => setSelectedProduct(prod)}
-      />
-    </div>
+          {/* Global Floating Elements */}
+          <Toast />
+          <BackToTop />
+        </div>
+      </Router>
+    </MarketplaceProvider>
   );
 }
